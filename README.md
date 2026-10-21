@@ -1,5 +1,7 @@
 # pickcolor
 
+![pickcolor's loupe and color label over a mountain photo](docs/pickcolor.png)
+
 A command-line color picker for macOS. Run it and the system zoom loupe appears. Click any pixel and its color is copied to the clipboard and printed to stdout. Press Esc to cancel.
 
 ```sh
