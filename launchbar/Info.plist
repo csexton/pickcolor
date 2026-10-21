@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIconFile</key>
+	<string>iconTemplate</string>
+	<key>CFBundleIdentifier</key>
+	<string>io.sexton.LaunchBar.action.PickColor</string>
+	<key>CFBundleName</key>
+	<string>Pick Color</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>LBDescription</key>
+	<dict>
+		<key>LBAuthor</key>
+		<string>Christopher Sexton</string>
+		<key>LBSummary</key>
+		<string>Pick a color from the screen and copy its hex value to the clipboard.</string>
+		<key>LBWebsiteURL</key>
+		<string>https://github.com/csexton/pickcolor</string>
+	</dict>
+	<key>LBScripts</key>
+	<dict>
+		<key>LBDefaultScript</key>
+		<dict>
+			<key>LBResultType</key>
+			<string>unknown</string>
+			<key>LBRunInBackground</key>
+			<true/>
+			<key>LBScriptName</key>
+			<string>default.sh</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
