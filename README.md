@@ -18,6 +18,6 @@ color=$(pickcolor)     # use it in scripts
 
 Exit codes: `0` means a color was picked, `1` means it was cancelled, `2` means a bad argument.
 
-While you hover, a label next to the loupe shows the value (in the chosen format) and a swatch for the pixel under the cursor. Reading the screen this way needs **Screen Recording** permission for whatever launches `pickcolor` (Terminal, LaunchBar, …). The first run asks for it. Without it you still get the loupe and the clicked color, just no live label.
+While you hover, a label next to the loupe shows the value (in the chosen format) and a swatch for the pixel under the cursor. Reading the screen this way needs **Screen Recording** permission for whatever launches `pickcolor` (Terminal, LaunchBar, …). The first run asks for it and quits without picking, so you can answer the prompt; run it again once access is granted. Without it you still get the loupe and the clicked color, just no live label.
 
 **LaunchBar:** create a Shell Script action, or put a script in `~/Library/Application Support/LaunchBar/Actions`, that runs `/usr/local/bin/pickcolor`.

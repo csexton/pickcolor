@@ -126,10 +126,7 @@ final class ColorOverlay {
     }
 
     func start() {
-        guard CGPreflightScreenCaptureAccess() else {
-            CGRequestScreenCaptureAccess() // prompts once; the overlay works on the next run
-            return
-        }
+        guard CGPreflightScreenCaptureAccess() else { return }
         Task { await loadShareableContent() }
         timer = Timer.scheduledTimer(withTimeInterval: 1.0 / 60, repeats: true) { _ in
             MainActor.assumeIsolated { self.tick() }
@@ -199,6 +196,17 @@ final class ColorOverlay {
         guard let image = try? await SCScreenshotManager.captureImage(contentFilter: filter, configuration: config) else { return nil }
         return NSBitmapImageRep(cgImage: image).colorAt(x: 0, y: 0)
     }
+}
+
+// The loupe grabs the mouse, so the Screen Recording prompt can't be clicked while picking.
+// The first time this copy runs without access, ask for it and quit instead of picking.
+// Later runs without access pick colors without the live label.
+let askedKey = "askedForScreenCapture:\(Bundle.main.executablePath ?? CommandLine.arguments[0])"
+if !CGPreflightScreenCaptureAccess() && !UserDefaults.standard.bool(forKey: askedKey) {
+    UserDefaults.standard.set(true, forKey: askedKey)
+    CGRequestScreenCaptureAccess()
+    FileHandle.standardError.write("pickcolor: allow Screen Recording in System Settings, then run pickcolor again\n".data(using: .utf8)!)
+    exit(1)
 }
 
 let app = NSApplication.shared
